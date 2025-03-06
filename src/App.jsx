@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./sections/HeroSection";
 import Footer from "./components/Footer";
 import PainSection from "./sections/PainSection";
+import DecisionSection from "./sections/DecisionSection";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Hero />
       <PainSection />
+      <DecisionSection />
       {/* <Footer /> */}
     </div>
   );
