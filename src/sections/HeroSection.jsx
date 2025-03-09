@@ -10,13 +10,13 @@ import screenshot4 from "../assets/screenshots/screenshot4.jpg";
 
 export default function HeroSection() {
     return (
-        <div className="h-screen max-w-[1023px] max-h-[844px] sm:h-fit flex flex-col justify-between pt-38 px-14 relative overflow-hidden sm:pb-60 justify-self-center">
+        <div style={{ height: "calc(100vh - 88px)" }} className="h-screen max-w-[1023px] max-h-[844px] sm:h-fit flex flex-col justify-between pt-18 px-14 relative overflow-hidden sm:pb-60 justify-self-center">
             
             {/* Hero Content (Side by Side on Larger Screens) */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between sm:gap-10 lg:gap-14">
                 
                 {/* Header */}
-                <h1 className="text-text leading-15 font-semibold text-6xl mb-15 sm:mb-0 sm:w-1/2">
+                <h1 className="text-text leading-16 font-semibold text-6xl mb-7 sm:mb-0 sm:w-1/2">
                     Get a website. <span className="text-primary">Skip the drama.</span>
                 </h1>
 

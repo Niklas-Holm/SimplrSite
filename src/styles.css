@@ -14,6 +14,7 @@ h1, h2, h3 {
 
 html {
     font-size: 100%;
+    background-color: #212121;
 }
 
 @theme {
@@ -24,6 +25,13 @@ html {
     --color-accent: #004ec2;
     --color-beige: #F0EBE3;
 }
+
+@layer base {
+    h2 {
+      @apply text-[40px] leading-[44px] font-[600] text-gray-900;
+    }
+  }
+  
 
 /* Hamburger Animation */
 button.open span:nth-child(1),

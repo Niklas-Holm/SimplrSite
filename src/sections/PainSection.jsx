@@ -3,10 +3,10 @@ import frustrated from "../assets/frustrated.png";
 
 export default function PainSection() {
     return (
-        <div className="relative bg-white h-fit w-full rounded-t-2xl overflow-hidden">
-            <h1 className="text-gray-900 font-primary font-bold text-4xl text-center p-14">
+        <div className="relative bg-white h-fit w-full rounded-t-2xl overflow-hidden -mb-2">
+            <h2 className="text-center p-4 pt-14">
                 Building a new website can feel like working a second job.
-            </h1>
+            </h2>
 
             {/* Image with Negative Margin to Overlap the Wave */}
             <img src={frustrated} className="relative z-20 pb-12 px-6" />

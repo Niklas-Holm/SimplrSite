@@ -1,13 +1,20 @@
 import { useState } from "react";
 import logo from "../assets/logo.png";
+import FilledButton from "./ui/FilledButton";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full h-22 bg-background text-text p-8 flex justify-between items-center z-1001">
+      {/* Invisible Placeholder to Prevent Hero Jumping */}
+      <div className="h-22">
+        {/* Navbar - Not Sticky, But Visible When Overlay is Open */}
+      <nav
+        className={`w-full h-22 bg-background text-text p-8 flex justify-between items-center z-1001 transition-all duration-300 ${
+          menuOpen ? "absolute top-0 left-0" : "top-0 left-0"
+        }`}
+      >
         {/* Logo */}
         <img src={logo} className="h-7" alt="Logo" />
 
@@ -32,18 +39,23 @@ export default function Navbar() {
           <span className="absolute top-[20px] left-0 w-full h-[2px] bg-white rounded-md transition-all duration-300"></span>
         </button>
       </nav>
+      </div> {/* ✅ Keeps space for the navbar */}
 
       {/* Overlay */}
       <div
-        className={`lg:hidden fixed z-1000 inset-0 bg-background transition-opacity duration-500 flex flex-col justify-between ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        className={`lg:hidden fixed z-1000 inset-0 bg-background transition-opacity duration-500 flex flex-col justify-between ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
       >
-        {/* Keep Navbar Visible */}
+        {/* Keep Navbar Visible Inside Overlay */}
         <div className="relative w-full h-16"></div>
 
         {/* Centered Text */}
         <div className="flex flex-col items-center justify-center flex-grow text-center">
           <h1
-            className={`text-4xl font-mono text-white transition-all duration-700 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className={`text-4xl font-mono text-white transition-all duration-700 ${
+              menuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             Let’s Talk
           </h1>
@@ -51,11 +63,7 @@ export default function Navbar() {
 
         {/* CTA Button at the Bottom */}
         <div className="flex z-1001 justify-center mb-12">
-          <button
-            className={`bg-primary text-white px-12 py-5 rounded-full font-bold text-xl transition-all duration-700 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-          >
-            Contact Us
-          </button>
+          <FilledButton text="Contact Us" menuOpen={menuOpen} />
         </div>
       </div>
     </>
