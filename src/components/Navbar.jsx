@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import FilledButton from "./ui/FilledButton";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -16,15 +19,22 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <img src={logo} className="h-7" alt="Logo" />
-
+        <Link to="/">
+          <img src={logo} className="h-7" alt="Logo" />
+        </Link>
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex space-x-8 text-lg">
-          <li><a href="/" className="hover:text-gray-400">Home</a></li>
-          <li><a href="/about" className="hover:text-gray-400">About</a></li>
-          <li><a href="/services" className="hover:text-gray-400">Services</a></li>
-          <li><a href="/contact" className="hover:text-gray-400">Contact</a></li>
-        </ul>
+        <div className="hidden lg:flex flex-row items-center gap-7">
+          <Link to="/contact">
+            <h1
+              className="text-xl tracking-wider font-mono text-white transition-all duration-700"
+            >
+              Let’s Talk
+            </h1>
+          </Link>
+          <button className="text-lg font-mono bg-primary rounded-full px-8 py-4">
+            Join the Club
+          </button>
+        </div>
 
         {/* Hamburger Menu - Hidden on lg screens */}
         <button
@@ -52,13 +62,15 @@ export default function Navbar() {
 
         {/* Centered Text */}
         <div className="flex flex-col items-center justify-center flex-grow text-center">
-          <h1
-            className={`text-4xl font-mono text-white transition-all duration-700 ${
-              menuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
-            Let’s Talk
-          </h1>
+          <Link to="/contact" onClick={closeMenu}>
+            <h1
+              className={`text-4xl font-mono text-white transition-all duration-700 ${
+                menuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              }`}
+            >
+              Let’s Talk
+            </h1>
+          </Link>
         </div>
 
         {/* CTA Button at the Bottom */}

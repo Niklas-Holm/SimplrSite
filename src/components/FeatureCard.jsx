@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FeatureCard ( { icon, head, description } ) {
+export default function FeatureCard({ icon, head, description }) {
     return (
         <div className="flex justify-center items-center text-center flex-col">
             <img src={icon} className="w-12 pb-5 h-full" />

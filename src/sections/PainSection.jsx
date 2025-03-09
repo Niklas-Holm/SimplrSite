@@ -3,23 +3,43 @@ import frustrated from "../assets/frustrated.png";
 
 export default function PainSection() {
     return (
-        <div className="relative bg-white h-fit w-full rounded-t-2xl overflow-hidden -mb-2">
+        <div className="relative bg-white w-full rounded-t-2xl overflow-hidden -mb-2 flex flex-col items-center text-center">
+            {/* Text */}
             <h2 className="text-center p-4 pt-14">
                 Building a new website can feel like working a second job.
             </h2>
 
-            {/* Image with Negative Margin to Overlap the Wave */}
-            <img src={frustrated} className="relative z-20 pb-12 px-6" />
+            {/* Image - Scales Correctly */}
+            <img 
+                src={frustrated} 
+                className="relative z-20 pb-12 px-6 w-[80%] sm:w-[60%] lg:w-[60%] max-w-3xl"
+                alt="Frustrated person"
+            />
 
-            {/* Wave SVG */}
+            {/* ✅ Mobile SVG (Two Large Waves, Deep Valleys) */}
             <svg
-                className="absolute -bottom-5 left-0 w-full h-[120px] z-0"
+                className="absolute bottom-0 left-0 w-full h-[120px] sm:hidden z-0"
                 viewBox="0 0 1440 320"
+                preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <path
                     fill="#F0EBE3"
-                    d="M0,100C200,-20,400,20,600,100C800,180,1000,300,1200,260C1400,220,1440,160,1440,160V320H0Z"
+                    d="M0,240 C480,450 960,80 1440,240 L1440,320 H0 Z"
+                    />
+            </svg>
+
+
+            {/* ✅ Desktop SVG (Two Large Waves, Deep Valleys) */}
+            <svg
+                className="absolute bottom-0 left-0 hidden sm:block w-full h-[180px] lg:h-[220px] z-0"
+                viewBox="0 0 1440 320"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    fill="#F0EBE3"
+                    d="M0,256 C480,400 960,100 1440,256 L1440,320 H0 Z"
                 />
             </svg>
         </div>

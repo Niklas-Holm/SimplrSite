@@ -17,6 +17,13 @@ html {
     background-color: #212121;
 }
 
+.full-width-svg {
+  width: 100vw !important;
+  left: 0;
+  right: 0;
+}
+
+
 @theme {
     --color-text: #ffffff;
     --color-background: #212121;

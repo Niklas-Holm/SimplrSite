@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/24/solid"; // ✅ Same arrow as before
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import FilledButton from "../components/ui/FilledButton";
 
 const faqData = [
@@ -97,37 +97,119 @@ const faqData = [
         and we’ll take care of the rest.`,
     },
 ];
-
 export default function FAQSection() {
     const [activeIndex, setActiveIndex] = useState(null);
+    const [showOverlay, setShowOverlay] = useState(false); // ✅ Track overlay state
 
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
     return (
-        <div className="max-w-2xl mx-auto py-12 px-4 text-white">
-            <h2 className="text-left mb-6 text-white">Any questions?</h2>
-            <div className="space-y-2">
-                {faqData.map((faq, index) => (
-                    <FAQItem
-                        key={index}
-                        index={index}
-                        question={faq.question}
-                        answer={faq.answer}
-                        isOpen={activeIndex === index}
-                        toggleFAQ={toggleFAQ}
-                    />
-                ))}
+        <>
+            {/* ✅ FAQ Section */}
+            <div className="max-w-2xl mx-auto py-12 px-4 text-white">
+                <h2 className="text-left mb-6 text-white">Any questions?</h2>
+                <div className="space-y-2">
+                    {faqData.map((faq, index) => (
+                        <FAQItem
+                            key={index}
+                            index={index}
+                            question={faq.question}
+                            answer={faq.answer}
+                            isOpen={activeIndex === index}
+                            toggleFAQ={toggleFAQ}
+                        />
+                    ))}
+                </div>
+                <button
+                    onClick={() => setShowOverlay(true)} // ✅ Open overlay
+                    className="mt-3 font-mono px-10 py-4 rounded-full bg-[#303030]"
+                >
+                    Ask Us a Question
+                </button>
             </div>
-            <button className="mt-3 font-mono px-10 py-4 rounded-full bg-[#303030] ">
-                Ask Us a Question
-            </button>
-        </div>
+
+            {/* ✅ Overlay Form */}
+            {showOverlay && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+                    onClick={() => setShowOverlay(false)} // ✅ Close when clicking outside
+                >
+                    <div
+                        className="bg-white w-full h-full max-w-md p-6 px-10 shadow-lg relative flex flex-col justify-center"
+                        onClick={(e) => e.stopPropagation()} // ✅ Prevent closing when clicking inside
+                    >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setShowOverlay(false)}
+                            className="absolute top-4 right-4 text-black text-2xl font-bold"
+                        >
+                            ✕
+                        </button>
+
+                        {/* Form Header */}
+                        <h2 className="text-2xl font-bold text-gray-900 text-center">
+                            Ask Us a Question
+                        </h2>
+
+                        {/* Form Fields */}
+                        <form className="mt-4 space-y-7">
+                            {/* Name */}
+                            <div>
+                                <label className="text-gray-700 font-semibold">Name <span className="text-gray-600">(required)</span></label>
+                                <div className="flex gap-4 mt-1">
+                                    <div className="flex flex-col w-1/2">
+                                        <label className="text-gray-900">First Name</label>
+                                        <input
+                                            type="text"
+                                            className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg focus:border-primary focus:ring-primary focus:ring-2 outline-none"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col w-1/2">
+                                        <label className="text-gray-900">Last Name</label>
+                                        <input
+                                            type="text"
+                                            className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg focus:border-primary focus:ring-primary focus:ring-2 outline-none"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                                <label className="text-gray-700 font-semibold">Email <span className="text-gray-600">(required)</span></label>
+                                <input
+                                    type="email"
+                                    className="w-full text-gray-900 p-3 bg-gray-100 rounded-lg mt-1 focus:border-primary focus:ring-primary focus:ring-2 outline-none"
+                                />
+                            </div>
+
+                            {/* Question */}
+                            <div>
+                                <label className="text-gray-700 font-semibold">Your Question <span className="text-gray-600">(required)</span></label>
+                                <textarea
+                                    className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg mt-1 h-24 focus:border-primary focus:ring-primary focus:ring-2 outline-none"
+                                ></textarea>
+                            </div>
+
+                            {/* Submit Button */}
+                            <button
+                                type="submit"
+                                className="w-full bg-primary text-white py-3 rounded-full text-lg font-bold"
+                            >
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 
-// FAQ Item Component
+// ✅ FAQ Item Component
 const FAQItem = ({ index, question, answer, isOpen, toggleFAQ }) => {
     return (
         <div className="border-b-1 border-[#303030] w-fit"> {/* ✅ Divider width matches text & icon */}
