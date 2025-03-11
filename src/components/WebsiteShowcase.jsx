@@ -2,39 +2,36 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import website1 from "../assets/website1.png";
+import screenshot1 from "../assets/screenshots/screenshot1.jpg";
+import screenshot2 from "../assets/screenshots/screenshot2.jpg";
+import screenshot3 from "../assets/screenshots/screenshot3.jpg";
+import screenshot4 from "../assets/screenshots/screenshot4.jpg";
 import arrowIcon from "../assets/arrow.png"; // ✅ Import custom arrow
 
 const websites = [
     {
         id: 1,
-        image: website1,
-        title: "JM-Fliserens Powerwashing",
-        subtitle: "Powerwashing company located in Denmark",
+        image: screenshot4,
+        title: "AXEL Woodworking",
+        subtitle: "Personalized furniture carpenting company",
     },
     {
         id: 2,
-        image: website1,
-        title: "Master Webflow Like a Pro",
-        subtitle: "Learn to build stunning Webflow sites with animations.",
+        image: screenshot2,
+        title: "JM-Fliserens Powerwashing",
+        subtitle: "Powerwashing company located in Denmark.",
     },
     {
         id: 3,
-        image: website1,
-        title: "Next.js & Tailwind UI Kit",
-        subtitle: "Build high-performance websites using Next.js and Tailwind.",
+        image: screenshot3,
+        title: "WoodWorks Woodworking",
+        subtitle: "High-end woodworking company",
     },
     {
         id: 4,
-        image: website1,
-        title: "E-commerce Web Solutions",
-        subtitle: "Optimized online stores built with speed and performance in mind.",
-    },
-    {
-        id: 5,
-        image: website1,
-        title: "Custom Web Apps",
-        subtitle: "Bespoke web applications tailored to your needs.",
+        image: screenshot1,
+        title: "BTRoof Roofing & Consulting",
+        subtitle: "Roofing and Consulting company located in New Jersey",
     },
 ];
 
@@ -90,7 +87,7 @@ export default function WebsiteShowcase() {
                                 <img
                                     src={website.image}
                                     alt="Website Preview"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-top object-cover"
                                 />
                             </div>
                             <h1 className="text-xl font-bold text-center mt-4">

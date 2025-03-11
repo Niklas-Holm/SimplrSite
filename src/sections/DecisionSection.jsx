@@ -7,14 +7,14 @@ export default function DecisionSection() {
             {/* ✅ Text Section */}
             <div className="w-full md:w-1/2">
                 <h2 className=" leading-13">
-                    What if you could make{" "}
+                    What if a{" "}
                     <span className="bg-primary text-white px-2">
-                        one decision
+                        single decision
                     </span>{" "}
-                    to simplify everything?
+                    could simplify everything?
                 </h2>
                 <p className="text-xl sm:text-2xl text-gray-800 pt-5">
-                    When you join SimplrSite, you get a <b>dedicated expert</b> to design, build, & evolve your website as you grow.
+                    With SimplrSite, a <b>dedicated expert</b> designs, builds, and updates your website to grow with you.
                 </p>
             </div>
 

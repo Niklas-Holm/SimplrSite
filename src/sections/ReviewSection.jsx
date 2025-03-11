@@ -1,48 +1,51 @@
 import React from "react";
 import ReviewCard from "../components/ReviewCard";
 
-import profile1 from "../assets/profilePics/profile1.png";
+import profile1 from "../assets/profilePics/noProfile.png";
+import profile2 from "../assets/profilePics/noProfile.png";
+import profile3 from "../assets/profilePics/noProfile.png";
+import profile4 from "../assets/profilePics/noProfile.png";
 
 export default function ReviewSection() {
     const reviews = [
         {
             stars: 5,
-            highlight: "I never stress about my website",
-            reviewText: "I never stress about my website. It’s already paying for itself and bringing in $500-$1,000+ a month.",
+            highlight: "SimplrSite built my website in just a few days",
+            reviewText: "SimplrSite built my website in just a few days, and I’ve already landed more clients than ever before. Professional, fast, and worth every dollar!",
             image: profile1,
-            name: "Mark Labriola II",
-            role: "Founder, Brand Viva",
+            name: "Julius Mølsted",
+            role: "Founder, JM-Fliserens Powerwashing",
         },
         {
             stars: 5,
-            highlight: "best website service",
-            reviewText: "The best website service ever! They handle everything, and my business has grown.",
-            image: profile1,
-            name: "Sarah Johnson",
-            role: "CEO, TechFlow",
+            highlight: "website brings in leads every week",
+            reviewText: "Before SimplrSite, my business had no online presence. Now, my website brings in leads every week. Couldn’t be happier! The team made the process incredibly easy, and I didn’t have to lift a finger.",
+            image: profile2,
+            name: "Axel Peterson",
+            role: "Owner, AXEL Woodworking",
         },
         {
             stars: 5,
-            highlight: "Highly recommend",
-            reviewText: "Highly recommend this team! My website looks professional and clean. Worth every penny!",
-            image: profile1,
-            name: "James Carter",
-            role: "Marketing Director, Creative Co.",
+            highlight: "I didn’t have time to build a website, and SimplrSite handled everything. It looks stunning and works perfectly!",
+            reviewText: "I didn’t have time to build a website, and SimplrSite handled everything. It looks stunning and works perfectly! I love how they made it fit my brand and vision without me needing to micromanage the process.",
+            image: profile3,
+            name: "Liam Carter",
+            role: "CEO, WoodWorks Woodworking",
         },
         {
             stars: 5,
-            highlight: "Incredible customer service",
-            reviewText: "Incredible customer service. They built exactly what I needed, and updates are quick!",
-            image: profile1,
-            name: "Emily Wilson",
-            role: "Founder, StartUpGo",
+            highlight: "My website now ranks on Google, and I’m getting calls daily! The team at SimplrSite knows what they’re doing.",
+            reviewText: "My website now ranks on Google, and I’m getting calls daily! The team at SimplrSite knows what they’re doing. I was skeptical at first, but this investment has paid off way faster than I expected.",
+            image: profile4,
+            name: "Brian Thompson",
+            role: "Owner, BTRoof Roofing & Consulting",
         },
     ];
 
     return (
         <div className="flex flex-col items-center bg-white py-16">
             <h1 className="text-4xl text-center font-bold text-gray-900 mb-10">
-                See what people like about us.
+                See what business owners say about us.
             </h1>
 
             {/* Grid Layout for Reviews */}

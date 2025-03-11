@@ -11,12 +11,14 @@ export default function Booking() {
     }, []);
 
     return (
-        <div className="w-full max-w-md mx-auto bg-black text-white rounded-lg p-6 shadow-lg">
-            <img className="h-5 mb-2" src={logo} />
-            <h1 className="text-2xl font-bold">Discovery Call</h1>
-            <p className="text-gray-400 mt-2">
-                In this call we'll get to know you and your business, create a simple sitemap for your website, and walk you through our process and pricing. Our goal is to provide all the info you need to decide if SiteClub is the right fit for you. Looking forward to connecting! 👋            
-            </p>
+        <div className="w-full max-w-md mx-auto bg-black text-white rounded-lg p-0 shadow-lg">
+            <div className="p-6">
+                <img className="h-5 mb-2" src={logo} />
+                <h1 className="text-2xl font-bold">Discovery Call</h1>
+                <p className="text-gray-400 mt-2">
+                    In this call, we’ll learn about you and your business, map out a simple sitemap for your website, and guide you through our process and pricing. Our goal is to give you all the details you need to decide if SimplrSite is the right fit. We’re excited to connect! 👋            
+                </p>
+            </div>
 
             {/* Calendly Embed */}
             <div 

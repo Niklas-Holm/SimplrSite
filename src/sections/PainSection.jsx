@@ -12,7 +12,7 @@ export default function PainSection() {
             {/* Image - Scales Correctly */}
             <img 
                 src={frustrated} 
-                className="relative z-20 pb-12 px-6 w-[80%] sm:w-[60%] lg:w-[60%] max-w-3xl"
+                className="relative z-20 pb-12 pt-10 px-6 w-[80%] sm:w-[60%] lg:w-[60%] max-w-3xl"
                 alt="Frustrated person"
             />
 

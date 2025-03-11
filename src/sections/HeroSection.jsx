@@ -4,7 +4,7 @@ import processIcon from "../assets/icons/processIcon.png";
 import updatesIcon from "../assets/icons/updatesIcon.png";
 import BulletWithIcon from "../components/BulletWithIcon";
 import screenshot1 from "../assets/screenshots/screenshot1.jpg";
-import screenshot2 from "../assets/screenshots/screenshot2.png";
+import screenshot2 from "../assets/screenshots/screenshot2.jpg";
 import screenshot3 from "../assets/screenshots/screenshot3.jpg";
 import screenshot4 from "../assets/screenshots/screenshot4.jpg";
 
@@ -37,13 +37,13 @@ export default function HeroSection() {
                 <h1 
                     className="text-text sm:leading-16 font-semibold text-6xl mb-7 sm:mb-0 sm:w-1/2 lg:text-8xl lg:leading-20 lg:w-7/10"
                 >
-                    Get a website. <span className="text-primary">Skip the drama.</span>
+                    Get a website. <span className="text-primary"><br />No stress, <br />No fuss.</span>
                 </h1>
 
                 {/* Bullet Points */}
                 <div className="space-y-4 sm:space-y-0 sm:flex sm:flex-col sm:w-1/2 text-[clamp(16px,2vw,27px)] lg:w-3/10">
-                    <BulletWithIcon icon={designIcon} text="Killer design" />
-                    <BulletWithIcon icon={processIcon} text="Painless process" />
+                    <BulletWithIcon icon={designIcon} text="Stunning design" />
+                    <BulletWithIcon icon={processIcon} text="Seamless experience" />
                     <BulletWithIcon icon={updatesIcon} text="Strategic updates" />
                 </div>
             </div>

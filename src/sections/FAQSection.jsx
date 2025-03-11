@@ -1,105 +1,110 @@
 import React, { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import FilledButton from "../components/ui/FilledButton";
+import OverlayForm from "../components/OverlayForm";
 
 const faqData = [
     {
-        question: "How long does it take to build my initial website?",
-        answer: `We launch most websites within 30 days. If you’re on a tight schedule, 
-        we can launch in as little as 7 days from when you become a member. Just let us know! 
-        Our streamlined process includes a strategy session, wireframe review, and final 
-        walkthrough before going live. You'll be kept informed at every step, and we’ll 
-        handle the technical details.`,
+        question: "How long does it take to build my website?",
+        answer: `We launch most websites within 7 days, depending on the plan you choose. 
+        If you need something faster, let us know, and we’ll prioritize your project. 
+        Our process is streamlined to be completely painless—just provide your details, 
+        and we handle everything from design to hosting.`,
     },
     {
-        question: "What is SimplrSite?",
-        answer: `SimplrSite is a subscription-based website design service that provides 
-        businesses with high-quality, hassle-free websites at an affordable monthly price. 
-        We handle everything from design and hosting to maintenance and updates, 
-        so you can focus on growing your business.`,
+        question: "What exactly is SimplrSite?",
+        answer: `SimplrSite is a subscription-based website service that gives businesses 
+        a professional, high-quality website without the large upfront cost. 
+        We take care of everything—design, hosting, security, updates, and even future redesigns.`,
     },
     {
         question: "How does the subscription work?",
-        answer: `Our subscription model allows businesses to get a professional website without high upfront costs. 
-        You choose a plan (Basic, Standard, or Premium), and we handle the design, hosting, and updates for a fixed 
-        monthly fee. There are no long-term contracts, and you can cancel anytime.`,
+        answer: `You pick a plan that fits your needs, and we build, host, and maintain your website 
+        for a fixed monthly fee. No long-term contracts, no hidden costs, and you can upgrade, 
+        downgrade, or cancel anytime.`,
     },
     {
-        question: "What is included in the monthly fee?",
-        answer: `Each plan includes professional website design, secure hosting, maintenance, and updates. 
-        The Standard and Premium plans include additional features like multiple pages, SEO optimization, 
-        and priority support.`,
+        question: "What’s included in my monthly subscription?",
+        answer: `Every plan includes website design, hosting, security, and updates. 
+        The Pro and Enterprise plans offer advanced features like SEO optimization, 
+        booking systems, and e-commerce functionality. You’ll also get a full website 
+        redesign every 12-24 months to keep things fresh.`,
     },
     {
         question: "What do I need to provide to get started?",
-        answer: `We will need your business details, logo, images, and any content you'd like to include on the website. 
-        If you don’t have content, we can provide basic placeholder text and stock images to get you started.`,
+        answer: `We make it simple—just send us your business details, logo, and any content 
+        you'd like on your website. If you don’t have content, no problem! 
+        We can provide placeholder text and stock images until you're ready.`,
     },
     {
-        question: "How do I request website changes?",
-        answer: `Simply contact us through your dashboard or email, and our team will make the updates for you. 
-        The number of changes you can request per month depends on your subscription plan.`,
+        question: "What if I need updates or changes?",
+        answer: `We offer a set number of content updates per month based on your plan. 
+        Need more? Just upgrade, or we can offer additional updates for a small fee. 
+        Updates include text, images, and minor tweaks—major redesigns are included 
+        every 12-24 months depending on your plan.`,
     },
     {
         question: "Will my website be mobile-friendly?",
-        answer: `Yes! All websites we build are fully responsive and work on desktops, tablets, and mobile phones. 
-        We ensure that your site looks great and functions properly on all screen sizes.`,
-    },
-    {
-        question: "Do you handle website security?",
-        answer: `Yes, we provide SSL certificates, regular updates, and secure hosting to keep your website safe. 
-        We also monitor for potential security threats and apply fixes as needed.`,
-    },
-    {
-        question: "Can I use my own domain?",
-        answer: `Yes! If you already own a domain, we will connect it to your new website. 
-        If you don’t have one, we can help you purchase a domain that best fits your brand.`,
+        answer: `Absolutely! Every site we build is fully optimized for mobile, tablet, 
+        and desktop viewing. Your customers will get a seamless experience no matter 
+        what device they use.`,
     },
     {
         question: "Do I own my website?",
-        answer: `You fully own your website’s content and branding. However, since we handle hosting and maintenance, 
-        if you decide to cancel, you can request a static version of your site, but certain platform-specific 
-        features may not transfer.`,
+        answer: `You own all your content and branding, but the website itself is part of our subscription service. 
+        If you cancel your subscription, the website will be taken offline. If you’d like to keep your website 
+        and move it elsewhere, we can negotiate a one-time buyout price for full ownership.`,
+    },    
+    {
+        question: "Can I cancel my subscription anytime?",
+        answer: `Yes! You’re not locked into any long-term contracts. Your website will 
+        remain active until the end of your billing period.`,
     },
     {
-        question: "Can I cancel my subscription at any time?",
-        answer: `Yes, you can cancel your subscription at any time. If you cancel, your website will remain active 
-        until the end of your billing period.`,
-    },
-    {
-        question: "What happens if I need more features later?",
-        answer: `If you need additional features, you can upgrade your plan at any time. Just reach out, and we’ll 
-        implement the requested upgrades.`,
+        question: "What happens if I need extra features later?",
+        answer: `You can upgrade at any time if you need additional features. 
+        Our Enterprise Plan includes unlimited pages and custom-built functionality, 
+        so if you need more, we can handle it!`,
     },
     {
         question: "Do you offer e-commerce websites?",
-        answer: `Currently, our focus is on business websites, but we can discuss basic e-commerce functionality upon request. 
-        If you need a full-fledged online store, we can offer a custom solution for an additional fee.`,
+        answer: `Yes! Our Enterprise Plan includes full e-commerce functionality, or you 
+        can request an add-on to our Pro Plan. We support Shopify, WooCommerce, 
+        or a fully custom-built store depending on your needs.`,
     },
     {
         question: "Is SEO included in all plans?",
-        answer: `SEO optimization is included in our Premium Plan. This includes keyword optimization, meta descriptions, 
-        Google indexing setup, and page speed enhancements to help your site rank better on search engines.`,
+        answer: `Basic SEO is included in the Pro and Enterprise plans, covering Google 
+        indexing, meta tags, and search-friendly structure. Advanced SEO with keyword 
+        research and analytics tracking is available in the Enterprise plan.`,
     },
     {
         question: "How is my website hosted?",
-        answer: `Your website is hosted on a secure, high-performance cloud hosting platform. 
-        We include an SSL certificate for security, ensuring your visitors’ data remains safe.`,
+        answer: `We handle all hosting on a secure, high-performance cloud platform. 
+        Every site includes SSL security to protect your customers and improve 
+        Google rankings.`,
     },
     {
         question: "How do I contact support?",
-        answer: `You can reach out to us via email at support@simplrsite.com. Premium plan users receive priority support 
-        for faster response times.`,
+        answer: `You can reach us at support@simplrsite.com. Pro users get priority support, 
+        while Enterprise users have access to premium support with faster response times.`,
+    },
+    {
+        question: "What makes SimplrSite better than hiring a web agency?",
+        answer: `Hiring a web agency means paying thousands upfront, dealing with long 
+        timelines, and handling your own maintenance. SimplrSite is affordable, 
+        stress-free, and includes everything—design, hosting, security, and updates—at 
+        a simple monthly price. No surprises, no tech headaches!`,
     },
     {
         question: "How do I get started?",
-        answer: `Getting started is easy! Just visit simplrsite.com, choose a plan, fill out a quick form with your business details, 
-        and we’ll take care of the rest.`,
+        answer: `Just visit simplrsite.com, choose a plan, book a meeting
+         or email and we will get started right away!`,
     },
 ];
 export default function FAQSection() {
     const [activeIndex, setActiveIndex] = useState(null);
-    const [showOverlay, setShowOverlay] = useState(false); // ✅ Track overlay state
+    const [showOverlay, setShowOverlay] = useState(false);
 
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -122,6 +127,7 @@ export default function FAQSection() {
                         />
                     ))}
                 </div>
+                <OverlayForm isOpen={showOverlay} onClose={() => setShowOverlay(false)} />
                 <button
                     onClick={() => setShowOverlay(true)} // ✅ Open overlay
                     className="mt-3 font-mono px-10 py-4 rounded-full bg-[#303030]"
@@ -129,82 +135,6 @@ export default function FAQSection() {
                     Ask Us a Question
                 </button>
             </div>
-
-            {/* ✅ Overlay Form */}
-            {showOverlay && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
-                    onClick={() => setShowOverlay(false)} // ✅ Close when clicking outside
-                >
-                    <div
-                        className="bg-white w-full h-full max-w-md p-6 px-10 shadow-lg relative flex flex-col justify-center"
-                        onClick={(e) => e.stopPropagation()} // ✅ Prevent closing when clicking inside
-                    >
-                        {/* Close Button */}
-                        <button
-                            onClick={() => setShowOverlay(false)}
-                            className="absolute top-4 right-4 text-black text-2xl font-bold"
-                        >
-                            ✕
-                        </button>
-
-                        {/* Form Header */}
-                        <h2 className="text-2xl font-bold text-gray-900 text-center">
-                            Ask Us a Question
-                        </h2>
-
-                        {/* Form Fields */}
-                        <form className="mt-4 space-y-7">
-                            {/* Name */}
-                            <div>
-                                <label className="text-gray-700 font-semibold">Name <span className="text-gray-600">(required)</span></label>
-                                <div className="flex gap-4 mt-1">
-                                    <div className="flex flex-col w-1/2">
-                                        <label className="text-gray-900">First Name</label>
-                                        <input
-                                            type="text"
-                                            className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg focus:border-primary focus:ring-primary focus:ring-2 outline-none"
-                                        />
-                                    </div>
-
-                                    <div className="flex flex-col w-1/2">
-                                        <label className="text-gray-900">Last Name</label>
-                                        <input
-                                            type="text"
-                                            className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg focus:border-primary focus:ring-primary focus:ring-2 outline-none"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Email */}
-                            <div>
-                                <label className="text-gray-700 font-semibold">Email <span className="text-gray-600">(required)</span></label>
-                                <input
-                                    type="email"
-                                    className="w-full text-gray-900 p-3 bg-gray-100 rounded-lg mt-1 focus:border-primary focus:ring-primary focus:ring-2 outline-none"
-                                />
-                            </div>
-
-                            {/* Question */}
-                            <div>
-                                <label className="text-gray-700 font-semibold">Your Question <span className="text-gray-600">(required)</span></label>
-                                <textarea
-                                    className="w-full p-3 bg-gray-100 text-gray-900 rounded-lg mt-1 h-24 focus:border-primary focus:ring-primary focus:ring-2 outline-none"
-                                ></textarea>
-                            </div>
-
-                            {/* Submit Button */}
-                            <button
-                                type="submit"
-                                className="w-full bg-primary text-white py-3 rounded-full text-lg font-bold"
-                            >
-                                Send
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            )}
         </>
     );
 }

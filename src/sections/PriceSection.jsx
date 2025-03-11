@@ -24,13 +24,13 @@ export default function PriceSection() {
             header: "Basic Plan",
             price: 99,
             features: [
-                "5 page website",
-                "Killer design",
+                "Simple information site",
+                "Mobile optimized",
                 "Painless process",
-                "Strategic updates",
-                "Dedicated expert",
-                "Domain and hosting",
-                "Future redesigns",
+                "Domain & security",
+                "SSL certificate",
+                "3 monthly changes",
+                "Website redesign every 24 months",
             ],
             popular: false,
         },
@@ -38,31 +38,38 @@ export default function PriceSection() {
             header: "Pro Plan",
             price: 149,
             features: [
-                "10 page website",
-                "Priority support",
+                "Custom-designed website",
+                "Fully optimized",
                 "Painless process",
-                "Strategic updates",
-                "Dedicated expert",
-                "Domain and hosting",
-                "Future redesigns",
+                "Priority support",
+                "Contact form",
+                "Booking system",
+                "Basic SEO",
+                "Domain & security",
+                "SSL certificate",
+                "5 monthly changes",
+                "Website redesign every 18 months",
             ],
-            popular: true, // ✅ Most Popular Plan (starts in the center)
+            popular: true, // ✅ Most Popular Plan
         },
         {
             header: "Enterprise Plan",
             price: 249,
             features: [
-                "Unlimited pages",
-                "Custom features",
+                "Unlimited pages & features",
+                "Fully custom-built website",
                 "Painless process",
-                "Strategic updates",
-                "Dedicated expert",
-                "Domain and hosting",
-                "Future redesigns",
+                "Premium support",
+                "Advanced SEO & user tracking",
+                "Blog & e-commerce included",
+                "Domain & security",
+                "SSL certificate",
+                "Unlimited changes",
+                "Website redesign every 12 months",
             ],
             popular: false,
         },
-    ];
+    ];    
 
     // Slick settings for mobile slider
     const settings = {
@@ -94,10 +101,10 @@ export default function PriceSection() {
         <div className="flex flex-col items-center bg-[#272727] pt-24 pb-20 px-2 border-red-500 rounded-t-2xl min-h-[900px] sm:min-h-[800px]">
             <div className="px-18 text-left md:text-center">
                 <h2 className="text-white pb-8">
-                    Join the worry-free website club.
+                    Join the stress-free website club.
                 </h2>
                 <h3 className="text-2xl pb-3">
-                    Add a dedicated website expert to your team who will design, build, and manage your website.
+                    Get a dedicated expert to design, build, and maintain your website effortlessly.
                 </h3>
                 <div className="pb-10">
                     <Link to="/contact">

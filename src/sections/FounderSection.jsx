@@ -18,15 +18,16 @@ export default function FounderSection() {
             <div className="w-full md:w-[95%] xl:w-1/2 bg-white px-5 md:px-10 py-18 rounded-l-4xl xl:rounded-4xl shadow-lg ml-0 md:ml-auto">
                 <h2>
                     A great website is <br />
-                    <span className="bg-primary text-white px-1">never finished.</span>
+                    <span className="bg-primary text-white px-1">always evolving.</span>
                 </h2>
 
                 <p className="text-gray-800 text-lg leading-8 mt-4">
-                    Your website shouldn't be frozen in time. It's a living extension of your 
-                    business and should evolve with you. After building hundreds of sites for 
-                    clients worldwide, I've watched too many websites become outdated, 
-                    costing businesses real customers. That's why I founded SiteClub – to 
-                    build websites that don't just maintain their value, they get better with time.
+                    Your website should evolve with your business, not hold it back. 
+                    After working with major companies and seeing countless websites become outdated, 
+                    I knew there had to be a better way. That’s why I started SimplrSite—to create beautiful,
+                    modern websites that stand the test of time.<br />
+                    I’m a software engineer with a passion for web design, and I believe every business 
+                    deserves a site that not only looks great today but keeps getting better.
                 </p>
 
                 {/* Signature */}
