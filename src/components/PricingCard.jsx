@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import FilledButton from "./ui/FilledButton";
 
 export default function PricingCard({ header, price, features = [], popular = false }) {
@@ -31,7 +32,9 @@ export default function PricingCard({ header, price, features = [], popular = fa
             </div>
 
             <div className="justify-self-center">
-                <FilledButton text="Join the Club" />
+                <Link to="/contact">
+                    <FilledButton text="Join the Club" />
+                </Link>
             </div>
         </div>
     );

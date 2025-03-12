@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,7 +13,6 @@ export default function PriceSection() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
     const [currentSlide, setCurrentSlide] = useState(1); // ✅ Start at the middle plan
 
-    // Detect screen size to switch between layouts
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener("resize", handleResize);
@@ -71,17 +71,16 @@ export default function PriceSection() {
         },
     ];    
 
-    // Slick settings for mobile slider
     const settings = {
         dots: false,
-        infinite: false, // ✅ No infinite loop
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 1, // ✅ Start at the middle plan
+        initialSlide: 1, 
         centerMode: true,
-        centerPadding: "20px", // ✅ Shows part of other slides
-        arrows: false, // ✅ Custom arrows instead
+        centerPadding: "20px", 
+        arrows: false, 
         beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
     };
 
@@ -98,34 +97,58 @@ export default function PriceSection() {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[#272727] pt-24 pb-20 px-2 border-red-500 rounded-t-2xl min-h-[900px] sm:min-h-[800px]">
-            <div className="px-18 text-left md:text-center">
+        <motion.div 
+            className="flex flex-col items-center bg-[#272727] pt-24 pb-20 px-2 border-red-500 rounded-t-2xl min-h-[900px] sm:min-h-[800px]"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+        >
+            <motion.div 
+                className="px-18 text-left md:text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                viewport={{ once: true }}
+            >
                 <h2 className="text-white pb-8">
                     Join the stress-free website club.
                 </h2>
                 <h3 className="text-2xl pb-3">
                     Get a dedicated expert to design, build, and maintain your website effortlessly.
                 </h3>
-                <div className="pb-10">
+                <motion.div 
+                    className="pb-10"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                    viewport={{ once: true }}
+                >
                     <Link to="/contact">
                         <SeethroughButton text="Let's Talk" />
                     </Link>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* ✅ Mobile: Show Slider, Desktop: Show Normal Layout */}
             {isMobile ? (
-                <div className="w-full max-w-[1100px] relative">
+                <motion.div 
+                    className="w-full max-w-[1100px] relative"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                    viewport={{ once: true }}
+                >
                     <Slider ref={sliderRef} {...settings}>
                         {pricingPlans.map((plan, index) => (
-                            <div key={index} className="px-4">
+                            <motion.div key={index} className="px-4">
                                 <PricingCard
                                     header={plan.header}
                                     price={plan.price}
                                     features={plan.features}
                                     popular={plan.popular}
                                 />
-                            </div>
+                            </motion.div>
                         ))}
                     </Slider>
 
@@ -152,20 +175,32 @@ export default function PriceSection() {
                             </button>
                         </div>
                     )}
-                </div>
+                </motion.div>
             ) : (
-                <div className="flex flex-col md:flex-row gap-5 w-full justify-center">
+                <motion.div 
+                    className="flex flex-col md:flex-row gap-5 w-full justify-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    transition={{ staggerChildren: 0.3 }}
+                    viewport={{ once: true }}
+                >
                     {pricingPlans.map((plan, index) => (
-                        <PricingCard
+                        <motion.div 
                             key={index}
-                            header={plan.header}
-                            price={plan.price}
-                            features={plan.features}
-                            popular={plan.popular}
-                        />
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+                        >
+                            <PricingCard
+                                header={plan.header}
+                                price={plan.price}
+                                features={plan.features}
+                                popular={plan.popular}
+                            />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             )}
-        </div>
+        </motion.div>
     );
 }

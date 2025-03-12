@@ -23,6 +23,20 @@ html {
   right: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+a {
+  cursor: pointer;
+}
+a:active {
+  transform: scale(0.98);
+}
 
 @theme {
     --color-text: #ffffff;

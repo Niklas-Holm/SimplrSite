@@ -85,9 +85,9 @@ export default function Navbar() {
 
         {/* ✅ CTA Button at the Bottom Now Opens the Overlay */}
         <div className="flex z-1001 justify-center mb-12">
-          <button onClick={openOverlay}>
+          <a onClick={openOverlay}>
             <FilledButton text="Contact Us" menuOpen={menuOpen} />
-          </button>
+          </a>
         </div>
       </div>
     </>

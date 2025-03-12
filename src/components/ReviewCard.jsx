@@ -33,7 +33,7 @@ export default function ReviewCard({ stars, reviewText, highlight, image, name, 
                 <img 
                     src={image}
                     alt={name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-9 h-9 object-cover"
                 />
 
                 {/* Reviewer Name & Role */}

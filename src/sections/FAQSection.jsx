@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import FilledButton from "../components/ui/FilledButton";
 import OverlayForm from "../components/OverlayForm";
@@ -114,58 +115,92 @@ export default function FAQSection() {
         <>
             {/* ✅ FAQ Section */}
             <div className="max-w-2xl mx-auto py-12 px-4 text-white">
-                <h2 className="text-left mb-6 text-white">Any questions?</h2>
-                <div className="space-y-2">
+                <motion.h2 
+                    className="text-left mb-6 text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                >
+                    Any questions?
+                </motion.h2>
+
+                {/* ✅ FAQ List */}
+                <motion.div 
+                    className="space-y-2"
+                    initial="hidden"
+                    whileInView="visible"
+                    transition={{ staggerChildren: 0.2 }}
+                    viewport={{ once: true }}
+                >
                     {faqData.map((faq, index) => (
-                        <FAQItem
+                        <motion.div
                             key={index}
-                            index={index}
-                            question={faq.question}
-                            answer={faq.answer}
-                            isOpen={activeIndex === index}
-                            toggleFAQ={toggleFAQ}
-                        />
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+                        >
+                            <FAQItem
+                                index={index}
+                                question={faq.question}
+                                answer={faq.answer}
+                                isOpen={activeIndex === index}
+                                toggleFAQ={toggleFAQ}
+                            />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
+
                 <OverlayForm isOpen={showOverlay} onClose={() => setShowOverlay(false)} />
-                <button
+
+                {/* ✅ Button Fade-in */}
+                <motion.button
                     onClick={() => setShowOverlay(true)} // ✅ Open overlay
                     className="mt-3 font-mono px-10 py-4 rounded-full bg-[#303030]"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                    viewport={{ once: true }}
                 >
                     Ask Us a Question
-                </button>
+                </motion.button>
             </div>
         </>
     );
 }
 
-// ✅ FAQ Item Component
+// ✅ FAQ Item Component with Expand/Collapse Animation
 const FAQItem = ({ index, question, answer, isOpen, toggleFAQ }) => {
     return (
-        <div className="border-b-1 border-[#303030] w-fit"> {/* ✅ Divider width matches text & icon */}
+        <div className="border-b-1 border-[#303030] w-fit">
             <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full text-left text-lg font-medium py-3 flex items-center gap-2 transition-all duration-300"
             >
-                {/* ✅ Same Yellow Arrow as Before */}
-                <ChevronDownIcon
-                    className={`w-8 text-primary transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : "rotate-0"
-                    }`}
-                />
+                {/* ✅ Animated Chevron Icon */}
+                <motion.div 
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <ChevronDownIcon className="w-8 text-primary" />
+                </motion.div>
                 <span>{question}</span>
             </button>
 
-            {/* Expand/Collapse Animation */}
-            <div
-                className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{
-                    maxHeight: isOpen ? "500px" : "0px",
-                    opacity: isOpen ? 1 : 0,
-                }}
-            >
-                <p className="px-10 pb-4 text-gray-300">{answer}</p>
-            </div>
+            {/* ✅ Expand/Collapse Animation */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                    >
+                        <p className="px-10 pb-4 text-gray-300">{answer}</p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ReviewCard from "../components/ReviewCard";
 
 import profile1 from "../assets/profilePics/noProfile.png";
@@ -26,7 +27,7 @@ export default function ReviewSection() {
         },
         {
             stars: 5,
-            highlight: "I didn’t have time to build a website, and SimplrSite handled everything. It looks stunning and works perfectly!",
+            highlight: "SimplrSite handled everything",
             reviewText: "I didn’t have time to build a website, and SimplrSite handled everything. It looks stunning and works perfectly! I love how they made it fit my brand and vision without me needing to micromanage the process.",
             image: profile3,
             name: "Liam Carter",
@@ -34,7 +35,7 @@ export default function ReviewSection() {
         },
         {
             stars: 5,
-            highlight: "My website now ranks on Google, and I’m getting calls daily! The team at SimplrSite knows what they’re doing.",
+            highlight: "I’m getting calls daily!",
             reviewText: "My website now ranks on Google, and I’m getting calls daily! The team at SimplrSite knows what they’re doing. I was skeptical at first, but this investment has paid off way faster than I expected.",
             image: profile4,
             name: "Brian Thompson",
@@ -44,16 +45,35 @@ export default function ReviewSection() {
 
     return (
         <div className="flex flex-col items-center bg-white py-16">
-            <h1 className="text-4xl text-center font-bold text-gray-900 mb-10">
+            <motion.h1 
+                className="text-4xl text-center font-bold text-gray-900 mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+            >
                 See what business owners say about us.
-            </h1>
+            </motion.h1>
 
             {/* Grid Layout for Reviews */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6">
+            <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6"
+                initial="hidden"
+                whileInView="visible"
+                transition={{ staggerChildren: 0.3 }}
+                viewport={{ once: true }}
+            >
                 {reviews.map((review, index) => (
-                    <ReviewCard key={index} {...review} />
+                    <motion.div 
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+                    >
+                        <ReviewCard {...review} />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 }

@@ -13,6 +13,7 @@ import ReviewSection from "./sections/ReviewSection";
 import FAQSection from "./sections/FAQSection";
 import FounderSection from "./sections/FounderSection";
 import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         </div>
         } />
         <Route path="/contact" element={<div><ContactPage /><Footer /></div>} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
